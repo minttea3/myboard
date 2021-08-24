@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kong.board.mappers.cscenter">
+	<!-- 방명록 전체 목록 -->
+	<select id="csCenterList" resultType="kong.my.domain.CsCenterVO">
+		select
+	 		idx, 
+	 		writer, 
+	 		subject, 
+	 		SUBSTR(content,1,10) as content, 
+	 		writedate
+	 	from cscenter
+	</select>
+	 <!-- 방명록 등록  -->
+    <insert id="csCentercreate">
+	    insert into cscenter (idx, writer, subject, content, writedate)
+	    values (NEXTVAL('seq_idx'), #{writer}, #{subject}, #{content}, NOW())
+    </insert>
+    
+ 	 <!--  방명록 상세정보  -->
+    <select id="csCenterDetail" resultType="kong.my.domain.CsCenterVO">
+        select  idx, writer, subject, content, writedate
+        from cscenter where idx = #{idx}
+    </select>
+    
+    <!-- 방명록 수정  -->
+    <update id="csCenterUpDate">
+    update cscenter
+    set writer = #{writer}, subject = #{subject}, content = #{content}, writedate = NOW()
+    where idx = #{idx} 
+    </update>
+    
+    <!-- 방명록 삭제 -->
+    <delete id="csCenterDelete">
+        delete from cscenter
+        where idx=#{idx}
+    </delete>
+    <!-- 작성한 사람 이름으로 검색하기 -->
+    <select id="csCenterSearch" parameterType="String" resultType="kong.my.domain.CsCenterVO">
+  		select idx, 
+	 		writer, 
+	 		subject, 
+	 		SUBSTR(content,1,10) as content, 
+	 		writedate 
+		from cscenter 
+		where 1=1
+		<if test="value != ''">
+		and writer like '%'||#{value}||'%'
+		</if>
+		
+		
+  	</select>
+  	<!-- 사원번호, 사원이름, 입사일자로 검색  -->
+	<select id="csCenterAllSearch" resultType="kong.my.domain.CsCenterVO">
+		select idx, 
+	 		writer, 
+	 		subject, 
+	 		SUBSTR(content,1,10) as content, 
+	 		writedate 
+		from cscenter 
+		where 1=1
+		<if test="idx != null">
+		and idx = #{idx}
+		</if>
+		<if test="writer != ''">
+		and writer = #{writer} 
+		</if>
+		<if test="writedate != null">
+		and writedate =  #{writedate} 
+		</if>
+		<if test="idx == null and writer == '' and writedate == null">
+		and idx = null
+		and writer = ''
+		and writedate = null
+		</if>
+  	</select>
+</mapper>
