@@ -19,6 +19,17 @@ public class seoulServiceImpl implements seoulService {
 	public List<SeoulVO> seoulList() {
 		return dao.seoulList();
 	}
-	
+
+	// 서울 구 등록
+	@Override
+	public void addZone(SeoulVO vo) {
+		dao.addZone(vo);
+	}
+	// 서울 구 수정
+	@Override
+	public void updateZone(SeoulVO vo) {
+		dao.updateZone(vo);
+		
+	}
 
 }

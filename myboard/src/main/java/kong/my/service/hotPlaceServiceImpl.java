@@ -1,6 +1,7 @@
 package kong.my.service;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -16,6 +17,11 @@ public class hotPlaceServiceImpl implements hotPlaceService {
 	@Override
 	public List<HotPlaceVO> hotPlaceList() {
 		return dao.hotPlaceList();
+	}
+	//핫플레이스 지역, 테마 검색
+	@Override
+	public List<HotPlaceVO> hotPlaceSearchList(Map<String, String> map) {
+		return dao.hotPlaceSearchList(map);
 	}
 
 }

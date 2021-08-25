@@ -3,11 +3,23 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kong.board.mappers.seoul">
-<!-- 서울시 전국구 조회 -->
+	<!-- 서울시 전국구 조회 -->
 	<select id="seoulList" resultType="kong.my.domain.SeoulVO">
 		select
 	 		s_code,
 	 		zone_name
 	 	from seoul
+	 	ORDER BY s_code asc
 	</select>
+	<!-- 서울시  구 등록 -->
+	<insert id="addZone" >
+		insert into seoul(s_code, zone_name)
+		values (#{s_code}, #{zone_name})
+	</insert>
+	<!-- 서울시 구 수정 -->
+	<update id="updateZone">
+		update seoul
+		set zone_name = #{zone_name}
+		where s_code = #{s_code}
+	</update>
 </mapper>
