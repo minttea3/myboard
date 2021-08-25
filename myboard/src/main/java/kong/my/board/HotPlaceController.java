@@ -95,7 +95,7 @@ public class HotPlaceController {
 	 public String admin_updateZoneName(Model model, String s_code) throws Exception{
 		 System.out.println("수정하러 들어옴~!");
 		 System.out.println(s_code+"들어왔어~~");
-		 
+//		 sservice.updateZone(vo);
 		 return "/hotPlace/adminList";
 	 }
 }
