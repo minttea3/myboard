@@ -36,5 +36,16 @@ public class seoulDAOImpl implements seoulDAO {
 		sql.update(namespace+".updateZone",vo);
 		
 	}
+	// 상세보기
+	@Override
+	public SeoulVO seoulDetail(String s_code) {
+		return sql.selectOne(namespace+".seoulDetail",s_code);
+	}
 	
+	// 삭제
+	@Override
+	public void seoulDelete(String s_code) {
+		
+		sql.delete(namespace+".seoulDelete",s_code);
+	}
 }

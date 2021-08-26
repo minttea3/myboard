@@ -3,11 +3,40 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kong.board.mappers.thema">
-<!-- 전체 테마 조회 -->
+	<!-- 전체 테마 조회 -->
 	<select id="themaList" resultType="kong.my.domain.ThemaVO">
 		select
 	 		t_code,
-	 		thema_name
+	 		t_name,
+	 		t_order
 	 	from thema
+	 	order by t_order asc
 	</select>
+	<!-- 테마 등록 -->
+	<insert id="addThema">
+	insert into thema(t_code, t_name, t_order)
+	values(#{t_code}, #{t_name}, #{t_order})
+	</insert>
+	<!-- 테마 상세 정보 -->
+	<select id="themaDetail" resultType="kong.my.domain.ThemaVO">
+		select
+	 		t_code,
+	 		t_name,
+	 		t_order
+	 	from thema
+	 	where t_code = #{t_code}
+	</select>
+	<!-- 테마 수정 -->
+	<update id="updateZone">
+		update thema
+		set t_name = #{t_name},
+			t_order = #{t_order}
+		where t_code = #{t_code}
+	</update>
+	<!-- 테마 삭제 -->
+    <delete id="seoulDelete">
+        delete from thema
+        where t_code=#{t_code}
+    </delete>
+	
 </mapper>

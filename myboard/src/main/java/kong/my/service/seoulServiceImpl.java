@@ -25,11 +25,23 @@ public class seoulServiceImpl implements seoulService {
 	public void addZone(SeoulVO vo) {
 		dao.addZone(vo);
 	}
+	// 상세정보
+	@Override
+	public SeoulVO seoulDetail(String s_code) {
+		
+		return dao.seoulDetail(s_code);
+	}
 	// 서울 구 수정
 	@Override
 	public void updateZone(SeoulVO vo) {
 		dao.updateZone(vo);
 		
 	}
-
+	
+	// 삭제
+	@Override
+	public void seoulDelete(String s_code) {
+		dao.seoulDelete(s_code);
+	
+	}
 }

@@ -21,5 +21,28 @@ public class themaDAOImpl implements themaDAO {
 	public List<ThemaVO> themaList() {
 		return sql.selectList(namespace + ".themaList");
 	}
+	// 테마 등록
+	@Override
+	public void addThema(ThemaVO vo) {
+		sql.insert(namespace+".addThema",vo);
+		
+	}
+	// 테마 구 수정
+	@Override
+	public void updateThema(ThemaVO vo) {
+		sql.update(namespace+".updateZone",vo);
+		
+	}
+	// 테마 상세보기
+	@Override
+	public ThemaVO themaDetail(String t_code) {
+		return sql.selectOne(namespace+".themaDetail",t_code);
+	}
+	// 테마 삭제하기
+	@Override
+	public void themaDelete(String t_code) {
+		sql.delete(namespace+".seoulDelete",t_code);
+		
+	}
 
 }

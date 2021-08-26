@@ -7,19 +7,34 @@
 	<select id="seoulList" resultType="kong.my.domain.SeoulVO">
 		select
 	 		s_code,
-	 		zone_name
+	 		s_name,
+	 		s_order
 	 	from seoul
-	 	ORDER BY s_code asc
+	 	ORDER BY s_order asc
 	</select>
 	<!-- 서울시  구 등록 -->
 	<insert id="addZone" >
-		insert into seoul(s_code, zone_name)
-		values (#{s_code}, #{zone_name})
+		insert into seoul(s_code, s_name, s_order)
+		values (#{s_code}, #{s_name}, #{s_order})
 	</insert>
+	<!-- 상세 정보 -->
+	<select id="seoulDetail"  resultType="kong.my.domain.SeoulVO">
+		select s_code, s_name, s_order
+		from seoul
+		where s_code = #{s_code}
+	</select>
 	<!-- 서울시 구 수정 -->
 	<update id="updateZone">
 		update seoul
-		set zone_name = #{zone_name}
+		set s_name = #{s_name},
+			s_order = #{s_order}
 		where s_code = #{s_code}
 	</update>
+
+	
+	<!-- 삭제 -->
+    <delete id="seoulDelete">
+        delete from seoul
+        where s_code=#{s_code}
+    </delete>
 </mapper>

@@ -14,7 +14,7 @@ function allList(){
 }
 
 function go_admin(){
-	location.href="/hotPlace/adminList";
+	location.href="/hotPlace/adminMain";
 }
 </script>
 </head>
@@ -27,13 +27,13 @@ function go_admin(){
 	<form method="post" action="${path}/hotPlace/hotPlaceList">
 		<select name="s_code" style="width:100px">
 		 <c:forEach items="${list}" var="list">
-			<option value="${list.s_code }">${list.zone_name }</option>
+			<option value="${list.s_code }">${list.s_name }</option>
 		</c:forEach>
 		</select>
 		<div>테마</div>
 		<select name="t_code" style="width:100px">
 		<c:forEach items="${list2}" var="list2"> 
-			<option value="${list2.t_code }">${list2.thema_name }</option>
+			<option value="${list2.t_code }">${list2.t_name }</option>
 		</c:forEach> 
 		</select>
 		<button type="submit">검색</button>

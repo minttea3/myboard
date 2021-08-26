@@ -1,15 +1,16 @@
 package kong.my.domain;
 
 public class HotPlaceVO {
-	private int h_code;		// 순번
-	private String s_code;	// 지역
-	private String t_code;	// 테마
-	private String shop_name;// 가게 이름
-	private String image;	// 이미지
-	private String loc;		// 위치
-	private String hours;	// 영업시간
-	private String menu_price;// 메뉴, 가격
-	private String comments; // 댓글
+	private int h_code;			// 순번
+	private String s_code;		// 지역
+	private String t_code;		// 테마
+	private String shop_name;	// 가게 이름
+	private String image;		// 이미지
+	private String loc;			// 위치
+	private String hours;		// 영업시간
+	private String menu_price;	// 메뉴, 가격
+	private String comments;	// 댓글
+	private int h_order; 		// 정렬 순서
 	
 	public int getH_code() {
 		return h_code;
@@ -65,5 +66,13 @@ public class HotPlaceVO {
 	public void setComments(String comments) {
 		this.comments = comments;
 	}
+	public int getH_order() {
+		return h_order;
+	}
+	public void setH_order(int h_order) {
+		this.h_order = h_order;
+	}
+
+	
 
 }

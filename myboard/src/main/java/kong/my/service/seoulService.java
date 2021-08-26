@@ -14,4 +14,11 @@ public interface seoulService {
 	
 	// 서울 구 수정
 	public void updateZone(SeoulVO vo);
+	
+
+	//상세보기
+	public SeoulVO seoulDetail(String s_code);
+	
+	//삭제하기
+	public void seoulDelete(String s_code);
 }

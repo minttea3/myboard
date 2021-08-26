@@ -14,8 +14,10 @@
 	 		loc,
 	 		hours,
 	 		menu_price,
-	 		comments
+	 		comments,
+	 		h_order
 	 	from hotplace
+	 	order by h_order asc
 	</select>
 	<!-- 핫플레이스 지역, 테마로 검색하여 조회 -->
 	<select id="hotPlaceSearchList" resultType="kong.my.domain.HotPlaceVO">
@@ -28,9 +30,51 @@
 	 		loc,
 	 		hours,
 	 		menu_price,
-	 		comments
+	 		comments,
+	 		h_order
 	 	from hotplace
 	 	where s_code = #{s_code}
 	 	and t_code = #{t_code}
+	 	order by h_order asc
 	</select>
+	<!-- 핫플레이스 등록 -->
+	<insert id="addHotplace" >
+		insert into hotplace(h_code, s_code, t_code, shop_name, image, loc, hours, menu_price, comments, h_order)
+		values (#{h_code}, #{s_code}, #{t_code}, #{shop_name}, #{image}, #{loc},#{hours},#{menu_price},#{comments},#{h_order})
+	</insert>
+	<!-- 핫플레이스 상세정보 -->
+	<select id="HotplaceDetail"  resultType="kong.my.domain.HotPlaceVO">
+		select
+	 		h_code,
+	 		s_code,
+	 		t_code,
+	 		shop_name,
+	 		image,
+	 		loc,
+	 		hours,
+	 		menu_price,
+	 		comments,
+	 		h_order
+	 	from hotplace
+		where h_code = #{h_code}
+	</select>
+	<!-- 핫플레이스 수정 -->
+	<update id="updateHotplace">
+		update hotplace
+		set s_code = #{s_code},
+			t_code = #{t_code},
+			shop_name = #{shop_name},
+			image = #{image},
+			loc = #{loc},
+			hours = #{hours},
+			menu_price = #{menu_price},
+			comments = #{comments},
+			h_order = #{h_order}
+		where h_code = #{h_code}
+	</update>
+	<!-- 핫플레이스 삭제 -->
+	<delete id="hotplaceDelete">
+        delete from hotplace
+        where h_code=#{h_code}
+    </delete>
 </mapper>
