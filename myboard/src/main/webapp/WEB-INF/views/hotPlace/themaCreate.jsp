@@ -7,6 +7,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+.center{
+margin: 5px 25px; padding: 20px
+}
+</style>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
 </head>
 <body>
 <h3>테마 등록 페이지</h3>
@@ -22,7 +29,7 @@
         </div>
         <div class="form-group">
             <label>정렬순서</label>
-            <input class="form-control" name="t_order" placeholder="정렬 순서를 적어주세요.">
+            <input class="form-control" name="t_order" placeholder="숫자만 입력 가능합니다.">
         </div>
        
     <button type="submit" class="btn btn-outline-info">등록</button>

@@ -7,6 +7,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+.center{
+margin: 5px 25px; padding: 20px
+}
+</style>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
 </head>
 <body>
 <h1>테마 관리 페이지</h1>
@@ -25,14 +32,16 @@
 		</tr>
 	<c:forEach items="${list}" var="list">
 		<tr>
-			<td><a href="${path}/hotPlace/adminThemaDetail?t_code=${list.t_code}">${list.t_code }</a></td>
-			<td>${list.t_name }</td>
+			<td>${list.t_code }</td>
+			<td><a href="${path}/hotPlace/themaUpdate?t_code=${list.t_code}">${list.t_name }</a></td>
 			<td>${list.t_order }</td>
 		</tr>
 	</c:forEach>
 	</tbody>
 	</table>
+	<br>
 	<a href="<c:url value='/hotPlace/themaCreate'/>" role="button" class="btn btn-outline-info"  style="font-size: 15px">글쓰기</a>
-	 <button type="button" class="btn btn-outline-info"><a href="../">돌아가기</a></button>
+		 <button type="button" class="btn btn-outline-info"><a href="/hotPlace/hotPlaceList"> 핫플레이스 메인으로</a></button>
+		  <button type="button" class="btn btn-outline-info"><a href="/hotPlace/adminMain"> 관리자 페이지</a></button>
 </body>
 </html>

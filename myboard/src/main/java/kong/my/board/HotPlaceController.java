@@ -103,7 +103,7 @@ public class HotPlaceController {
 		 return "redirect:adminSeoul"; 
 	 }
 	 
-	// 방명록 상세 페이지로 이동
+	// 방명록 상세 페이지로 이동 -- 사용안함.
 	    @RequestMapping(value = "/adminSeoulDetail", method = RequestMethod.GET)
 	    public String getdetail(Model model, String s_code) {
 	    	SeoulVO data = sservice.seoulDetail(s_code); //idx값 넘김
@@ -153,7 +153,7 @@ public class HotPlaceController {
 		tservice.addThema(vo);
 		 return "redirect:adminThema"; 
 	 }
-	 //테마 상세 페이지
+	 //테마 상세 페이지 --사용안함
     @RequestMapping(value = "/adminThemaDetail", method = RequestMethod.GET)
     public String admin_Themadetail(Model model, String t_code) {
     	ThemaVO data = tservice.themaDetail(t_code); //idx값 넘김
@@ -204,7 +204,7 @@ public class HotPlaceController {
 		hservice.addHotPlace(vo);
 		return "redirect:adminHotPlace"; 
 	 }
-	 //상세페이지 이동
+	 //상세페이지 이동 -- 사용안함
 	 @RequestMapping(value = "/adminHotPlaceDetail", method = RequestMethod.GET)
 	    public String admin_Themadetail(Model model, int h_code) {
 		 HotPlaceVO data = hservice.HotPlaceDetail(h_code);

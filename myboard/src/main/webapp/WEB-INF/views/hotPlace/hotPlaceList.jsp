@@ -17,11 +17,18 @@ function go_admin(){
 	location.href="/hotPlace/adminMain";
 }
 </script>
+<style>
+.center{
+margin: 5px 25px; padding: 20px
+}
+</style>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
 </head>
-<body>
+<body class="center">
 
 	<h1>핫플레이스</h1>
-	<div style="width:700px" align="right"><input type="button" onclick="go_admin()" value="관리자 페이지"></div>
+	<div style="width:700px"  class="form-group"><input type="button" class="btn btn-outline-info" onclick="go_admin()" value="관리자 페이지"></div>
 	
 	<div>지역</div>
 	<form method="post" action="${path}/hotPlace/hotPlaceList">
@@ -30,18 +37,23 @@ function go_admin(){
 			<option value="${list.s_code }">${list.s_name }</option>
 		</c:forEach>
 		</select>
-		<div>테마</div>
+		<div >테마</div>
 		<select name="t_code" style="width:100px">
 		<c:forEach items="${list2}" var="list2"> 
 			<option value="${list2.t_code }">${list2.t_name }</option>
 		</c:forEach> 
 		</select>
-		<button type="submit">검색</button>
+		<button type="submit" class="btn btn-outline-info">검색</button>
 	</form>	
 	
-	<div width="700px" style="width: 700px; text-align: right;"><input type="button" onclick="allList()" value="전체보기"></div>
+	<div width="700px" style="width: 700px; text-align: right;"><input type="button" class="btn btn-outline-info" onclick="allList()" value="전체보기"></div>
 	
 	<table border="1" width="700px">
+	<c:if test="${empty list3}">
+	<tr>
+		<td colspan="2">조회 결과가 없습니다.</td>
+	</tr>
+	</c:if>
 	<c:forEach items="${list3}" var="list3">
 		<tr>
 			<th rowspan="6" width="300px">🌹 <!--<img src="" alt="레스토랑 이미지"> --></th>

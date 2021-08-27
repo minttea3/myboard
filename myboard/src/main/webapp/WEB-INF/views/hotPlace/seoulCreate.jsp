@@ -23,11 +23,11 @@ margin: 5px 25px; padding: 20px
         </div>
         <div class="form-group">
             <label>코드명</label>
-            <input type="text" class="form-control" name="s_name" placeholder="구를 적어주세요.">
+            <input type="text" class="form-control" name="s_name" placeholder="등록하실  '구'를 적어주세요.">
         </div>
         <div class="form-group">
             <label>정렬순서</label>
-            <input class="form-control" name="s_order" placeholder="정렬 순서를 적어주세요.">
+            <input class="form-control" name="s_order" placeholder="숫자만 입력 가능합니다.">
         </div>
        
     <button type="submit" class="btn btn-outline-info">등록</button>

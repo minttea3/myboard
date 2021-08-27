@@ -5,33 +5,43 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+.center{
+margin: 5px 25px; padding: 20px;
+}
+</style>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
 </head>
 <body>
  <h2>Update page</h2>
-    <form name="hotPlaceUpdate" method="POST" action="${path}/hotPlace/hotPlaceUpdate?h_code=${data.h_code}">
+    <form name="hotPlaceUpdate" class="center" method="POST" action="${path}/hotPlace/hotPlaceUpdate?h_code=${data.h_code}">
     
-        <div>순번 : ${data.h_code}</div>
-        <div>지역:</div>
-        <div><input name="s_code" value="${data.s_code}" type="text"/></div>
-        <div>테마 : </div>
-        <div><input name="t_code" value="${data.t_code}" type="text"/></div>
-        <div>상호명 : </div>
-        <div><input name="shop_name" value="${data.shop_name}" type="text"/></div>
-        <div>이미지 : </div>
-        <div><input name="image" value="${data.image}" type="text"/></div>
-        <div>위치 : </div>
-        <div><input name="loc" value="${data.loc}" type="text"/></div>
-        <div>영업시간 : </div>
-        <div><input name="hours" value="${data.hours}" type="text"/></div>
-        <div>메뉴&가격 : </div>
-        <div><input name="menu_price" value="${data.menu_price}" type="text"/></div>
-        <div>댓글 : </div>
-        <div><input name="comments" value="${data.comments}" type="text"/></div>
-        <div>정렬순서 : </div>
-        <div><input name="h_order" value="${data.h_order}" type="text"/></div>
-  		<div>
+        <div class="form-group">순번 : ${data.h_code}</div>
+        <div class="form-group">지역:</div>
+        <div><input  class="form-control" name="s_code" value="${data.s_code}" type="text"/></div>
+        <div class="form-group">테마 : </div>
+        <div><input name="t_code"  class="form-control" value="${data.t_code}" type="text"/></div>
+        <div class="form-group">상호명 : </div>
+        <div ><input name="shop_name" class="form-control"  value="${data.shop_name}" type="text"/></div>
+        <div class="form-group">이미지 : </div>
+        <div><input name="image"  class="form-control" value="${data.image}" type="text"/></div>
+        <div class="form-group">위치 : </div>
+        <div><input name="loc"  class="form-control" value="${data.loc}" type="text"/></div>
+        <div class="form-group">영업시간 : </div>
+        <div><input name="hours"  class="form-control" value="${data.hours}" type="text"/></div>
+        <div class="form-group">메뉴&가격 : </div>
+        <div><input name="menu_price"  class="form-control" value="${data.menu_price}" type="text"/></div>
+        <div class="form-group">댓글 : </div>
+        <div><input name="comments"  class="form-control" value="${data.comments}" type="text"/></div>
+        <div class="form-group">정렬순서 : </div>
+        <div><input name="h_order"  class="form-control" value="${data.h_order}" type="text"/></div>
+  		<div class="form-group">
             <input type="submit" class="btn btn-outline-info" value="완료"/>
             <input type="reset" class="btn btn-outline-info" value="리셋"/>
+            <button type="button" class="btn btn-outline-info"><a href="/hotPlace/hotPlaceList"> 핫플레이스 메인으로</a></button>
+            <button type="button" class="btn btn-outline-info"><a href="/hotPlace/adminHotPlace">이전으로</a></button>
+        
         </div>
     </form>
 </body>
