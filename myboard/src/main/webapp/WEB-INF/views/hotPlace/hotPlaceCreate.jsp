@@ -55,6 +55,10 @@ margin: 5px 25px; padding: 20px;
         </div>
         <div class="form-group">
             <label>영업 시간</label>
+            <input type="text" class="form-control" name="menu_price" placeholder="">
+        </div>
+        <div class="form-group">
+            <label>메뉴 가격</label>
             <input type="text" class="form-control" name="hours" placeholder="">
         </div>
         <div class="form-group">
