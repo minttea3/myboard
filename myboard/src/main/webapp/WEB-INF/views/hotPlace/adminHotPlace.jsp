@@ -100,7 +100,7 @@ margin: 5px 25px; padding: 20px;
 		</tr> --%>
 		<tr>
 			<td style="text-align: center;">🌹 </td>
-			<td>${list.shop_name }</td>
+			<td><a href="${path}/hotPlace/hotPlaceUpdate?h_code=${list.h_code}">${list.shop_name }</a></td>
 			<td>${list.loc} </td>
 			<td>${list.hours} </td>
 			<td>${list.menu_price}</td>

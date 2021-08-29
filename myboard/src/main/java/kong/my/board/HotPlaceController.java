@@ -303,19 +303,22 @@ public class HotPlaceController {
 	    	System.out.println(s_name);
 	    	System.out.println(t_name);
 	    	System.out.println(shop_name);
+	    
+	    	
+	    	 //서울 전국 구 리스트
+			 List<SeoulVO> s_list = sservice.seoulList();
+			 model.addAttribute( "s_list", s_list );
+			 
+			 // 테마 리스트
+			 List<ThemaVO> t_list = tservice.themaList();
+			 model.addAttribute("t_list",t_list);
+	    	
+	    	
 	    	Map<String, Object> map = new HashMap<String,Object>();
 			
-	    	if(s_name.equals("")) {
-	    		
-	    	}else {
 	    		map.put("s_name", s_name);
-	    	}
-	    	
-	    	if(t_name.equals("")) {
-	    		
-	    	}else {
 	    		map.put("t_name", t_name);
-	    	}
+	    	
 	    	if(shop_name.equals("")) {
 	    		
 	    	}else {
