@@ -42,7 +42,10 @@ public class themaDAOImpl implements themaDAO {
 	@Override
 	public void themaDelete(String t_code) {
 		sql.delete(namespace+".seoulDelete",t_code);
-		
 	}
-
+	//테마명으로 검색하기
+	@Override
+	public List<ThemaVO> themaSearchList(String t_name) {
+		return  sql.selectList(namespace + ".themaSearchList",t_name);
+	}
 }

@@ -38,5 +38,14 @@
         delete from thema
         where t_code=#{t_code}
     </delete>
-	
+	  <!-- 검색 -->
+    <select id="themaSearchList" parameterType="String" resultType="kong.my.domain.ThemaVO">
+    		select
+	 		t_code,
+	 		t_name,
+	 		t_order
+	 	from thema
+		where t_name like #{value}||'%'
+	 	order by t_order asc
+    </select>
 </mapper>

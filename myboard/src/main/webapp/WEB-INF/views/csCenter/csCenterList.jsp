@@ -92,7 +92,7 @@
 				</tr>
 			</table>
 		</form>
-	</article>
+</article>
 
 <form name="userForm">
 	<table border="1" cellspacing="0">

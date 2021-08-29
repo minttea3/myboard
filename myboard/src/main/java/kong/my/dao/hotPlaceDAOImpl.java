@@ -48,7 +48,10 @@ public class hotPlaceDAOImpl implements hotPlaceDAO {
 	@Override
 	public void HotPlaceDelete(int h_code) {
 		sql.delete(namespace+".hotplaceDelete",h_code);
-		
 	}
-	
+	// 여러 조건으로 검색하기 (순번, 작성자, 날짜)
+	@Override
+	public List<HotPlaceVO> adminHotPlaceSearch(Map<String, Object> map) {
+		return sql.selectList(namespace+".adminHotPlaceSearch", map);
+	}	
 }

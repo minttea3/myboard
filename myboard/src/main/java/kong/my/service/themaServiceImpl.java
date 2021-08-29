@@ -41,6 +41,10 @@ public class themaServiceImpl implements themaService {
 	@Override
 	public void themaDelete(String t_code) {
 		dao.themaDelete(t_code);
-		
+	}
+	//테마명으로 검색하기
+	@Override
+	public List<ThemaVO> themaSearchList(String t_name) {
+		return dao.themaSearchList(t_name);
 	}
 }

@@ -44,4 +44,9 @@ public class seoulServiceImpl implements seoulService {
 		dao.seoulDelete(s_code);
 	
 	}
+	//지역명으로 검색하기
+	@Override
+	public List<SeoulVO> seoulSearchList(String s_name) {
+		return dao.seoulSearchList(s_name);
+	}
 }

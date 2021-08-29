@@ -17,6 +17,18 @@ margin: 5px 25px; padding: 20px
 </head>
 <body>
 <h1>테마 관리 페이지</h1>
+<article>
+		<form name="themaSearch" action="${path}/hotPlace/themaSearch">
+			<legend style="font-size: 15px">테마명으로 검색</legend>
+			<table style="background-color:white;">
+				<tr>
+					<th style="font-size: 15px">테마명</th>
+					<td><input type="text" name="t_name"></td>
+					<td align="center"><input type="submit" class="btn btn-outline-info" value="검색">
+				</tr>
+			</table>
+		</form>
+</article>
 <table border="1" cellspacing="0" style="width:500px; text-align: center;">
 	<thead>
 		<tr>

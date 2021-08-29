@@ -21,4 +21,7 @@ public interface seoulService {
 	
 	//삭제하기
 	public void seoulDelete(String s_code);
+
+	//지역명으로 검색하기
+	public List<SeoulVO> seoulSearchList(String s_name);
 }

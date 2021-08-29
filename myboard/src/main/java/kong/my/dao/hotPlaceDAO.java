@@ -3,6 +3,7 @@ package kong.my.dao;
 import java.util.List;
 import java.util.Map;
 
+import kong.my.domain.CsCenterVO;
 import kong.my.domain.HotPlaceVO;
 import kong.my.domain.SeoulVO;
 
@@ -20,4 +21,6 @@ public interface hotPlaceDAO {
 	public void updateHotPlace(HotPlaceVO vo);
 	//핫플레이스 삭제하기
 	public void HotPlaceDelete(int h_code);
+	// 여러 조건으로 검색하기 (순번, 작성자, 날짜)
+	public List<HotPlaceVO> adminHotPlaceSearch(Map<String,Object> map);
 }

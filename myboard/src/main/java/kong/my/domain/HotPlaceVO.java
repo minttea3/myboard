@@ -11,6 +11,8 @@ public class HotPlaceVO {
 	private String menu_price;	// 메뉴, 가격
 	private String comments;	// 댓글
 	private int h_order; 		// 정렬 순서
+	private String s_name; 		// 지역명(서울 테이블)
+	private String t_name;		// 테마명(테마 테이블)
 	
 	public int getH_code() {
 		return h_code;
@@ -71,6 +73,18 @@ public class HotPlaceVO {
 	}
 	public void setH_order(int h_order) {
 		this.h_order = h_order;
+	}
+	public String getS_name() {
+		return s_name;
+	}
+	public void setS_name(String s_name) {
+		this.s_name = s_name;
+	}
+	public String getT_name() {
+		return t_name;
+	}
+	public void setT_name(String t_name) {
+		this.t_name = t_name;
 	}
 
 	

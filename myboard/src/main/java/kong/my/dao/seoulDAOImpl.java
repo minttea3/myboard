@@ -48,4 +48,9 @@ public class seoulDAOImpl implements seoulDAO {
 		
 		sql.delete(namespace+".seoulDelete",s_code);
 	}
+	//지역명으로 검색하기
+	@Override
+	public List<SeoulVO> seoulSearchList(String s_name) {
+		return sql.selectList(namespace+".seoulSearchList",s_name);
+	}
 }

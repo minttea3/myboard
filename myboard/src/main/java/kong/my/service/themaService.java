@@ -19,4 +19,7 @@ public interface themaService {
 	
 	// 테마 삭제하기
 	public void themaDelete(String t_code);
+	
+	// 테마명으로 검색하기
+	public List<ThemaVO> themaSearchList(String t_name);
 }

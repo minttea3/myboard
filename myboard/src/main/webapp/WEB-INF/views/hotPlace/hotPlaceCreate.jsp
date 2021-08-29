@@ -1,3 +1,5 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -17,18 +19,28 @@ margin: 5px 25px; padding: 20px;
 <h3>핫플레이스 등록 페이지</h3>
 <form class="center" method="post">
         <h2>Create Page</h2>
-        <div class="form-group">
+      <!--   <div class="form-group">
               <label>순번</label>
             <input type="text" class="form-control" name="h_code" placeholder="숫자만 입력가능합니다.">
-        </div>
-        <div class="form-group">
+        </div> -->
+       <div class="form-group">
             <label>지역 코드명</label>
-            <input type="text" class="form-control" name="s_code" placeholder="구를 적어주세요.">
-        </div>
-        <div class="form-group">
+           <!--  <input type="text" class="form-control" name="s_code" placeholder="구를 적어주세요."> -->
+	        <select name="s_code" style="width:100px">
+				<c:forEach items="${s_list}" var="s_list">
+					<option value="${s_list.s_code}">${s_list.s_name }</option>
+				</c:forEach>
+			</select>
+        </div> 
+    	 <div class="form-group">
             <label>테마 코드명</label>
-            <input type="text" class="form-control" name="t_code" placeholder="테마를 적어주세요.">
-        </div>
+           <!--  <input type="text" class="form-control" name="t_code" placeholder="테마를 적어주세요."> -->
+	        <select name="t_code" style="width:100px">
+			<c:forEach items="${t_list}" var="t_list"> 
+				<option value="${t_list.t_code }">${t_list.t_name }</option>
+			</c:forEach> 
+			</select>
+        </div> 
         <div class="form-group">
             <label>상호명</label>
             <input type="text" class="form-control" name="shop_name" placeholder="상호명을 적어주세요.">

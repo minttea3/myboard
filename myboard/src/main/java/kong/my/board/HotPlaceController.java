@@ -1,5 +1,7 @@
 package kong.my.board;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -7,6 +9,7 @@ import java.util.Map;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -95,7 +98,7 @@ public class HotPlaceController {
 	 @RequestMapping(value = "/seoulCreate", method = RequestMethod.GET)
 	    public String getcreate() throws Exception {
 	       return "/hotPlace/seoulCreate";
-	    }
+	 }
 	 // 관리자 페이지 - 서울시 구 등록
 	 @RequestMapping(value="/seoulCreate", method=RequestMethod.POST) //url mapping
 	 public String admin_addZoneName(Model model, SeoulVO vo) throws Exception{
@@ -132,6 +135,23 @@ public class HotPlaceController {
 	    	sservice.seoulDelete(s_code);
 	       return "redirect:adminSeoul"; 
 	 }
+	 // 관리자페이지 - 서울  지역명으로 검색
+	 @RequestMapping(value = "/seoulSearch", method = RequestMethod.GET)
+	    public String seoulSearch(String s_name, Model model) throws Exception {
+		List<SeoulVO> list= new ArrayList<SeoulVO>();
+		 if(s_name.equals("전체")) {// 전체 입력시
+			 list = sservice.seoulList();
+		 }else if(s_name.equals("")) { // 입력한 값이 없을시 전체 보기로
+		     list = sservice.seoulList();
+		 }else { // 입력한 값이 있다면 
+			 System.out.println("여기 왔어~");
+			 list = sservice.seoulSearchList(s_name);
+		 }
+		 model.addAttribute("list",list);
+	       return "/hotPlace/adminSeoul";
+	 }
+
+	 
 	 //****************************
 	 
 	 // 테마 관리 페이지
@@ -181,8 +201,23 @@ public class HotPlaceController {
        return "redirect:adminThema";
     }
 	 
-	 
-	 
+	 // 테마 명으로 검색
+    
+	 @RequestMapping(value = "/themaSearch", method = RequestMethod.GET)
+    public String themaSearch(String t_name, Model model) throws Exception {
+	List<ThemaVO> list= new ArrayList<ThemaVO>();
+	 if(t_name.equals("전체")) {// 전체 입력시
+		 list = tservice.themaList();
+	 }else if(t_name.equals("")) { // 입력한 값이 없을시 전체 보기로
+		 list = tservice.themaList();
+	 }else { // 입력한 값이 있다면 
+		 System.out.println("여기 왔어~");
+		 list = tservice.themaSearchList(t_name);
+	 }
+	 	model.addAttribute("list",list);
+       return "/hotPlace/adminThema";
+ }
+
 	 
 	 //******************************
 	 // 핫플레이스 관리 페이지
@@ -191,17 +226,37 @@ public class HotPlaceController {
 	 public String goAdminHotPlacePage(Model model) throws Exception{
 		 List<HotPlaceVO> list = hservice.hotPlaceList();
 		 model.addAttribute( "list", list );
+		 
+		 //서울 전국 구 리스트
+		 List<SeoulVO> s_list = sservice.seoulList();
+		 model.addAttribute( "s_list", s_list );
+		 
+		 // 테마 리스트
+		 List<ThemaVO> t_list = tservice.themaList();
+		 model.addAttribute("t_list",t_list);
+		 
+		 
 		 return "/hotPlace/adminHotPlace";
 	 }
-	// 관리자 페이지 - 테마  등록 페이지로 이동
+	// 관리자 페이지 - 핫플레이스  등록 페이지로 이동
 	 @RequestMapping(value = "/hotPlaceCreate", method = RequestMethod.GET)
-	    public String go_admin_addHotPlacePage() throws Exception {
+	    public String go_admin_addHotPlacePage(Model model) throws Exception {
+		 
+		 //서울 전국 구 리스트
+		 List<SeoulVO> s_list = sservice.seoulList();
+		 model.addAttribute( "s_list", s_list );
+		 
+		 // 테마 리스트
+		 List<ThemaVO> t_list = tservice.themaList();
+		 model.addAttribute("t_list",t_list);
+		 
 	       return "/hotPlace/hotPlaceCreate";
 	    }
 	 // 핫플레이스 등록
 	 @RequestMapping(value="/hotPlaceCreate", method=RequestMethod.POST) //url mapping
 	 public String admin_addHotPlace(Model model, HotPlaceVO vo) throws Exception{
 		hservice.addHotPlace(vo);
+		
 		return "redirect:adminHotPlace"; 
 	 }
 	 //상세페이지 이동 -- 사용안함
@@ -217,6 +272,15 @@ public class HotPlaceController {
 	    public String go_adminHotPlaceUpdatePage(int h_code, Model model) throws Exception {
 		 HotPlaceVO data = hservice.HotPlaceDetail(h_code);
 	    	model.addAttribute("data",data);
+	    	
+	    	 //서울 전국 구 리스트
+			 List<SeoulVO> s_list = sservice.seoulList();
+			 model.addAttribute( "s_list", s_list );
+			 
+			 // 테마 리스트
+			 List<ThemaVO> t_list = tservice.themaList();
+			 model.addAttribute("t_list",t_list);
+			 
 	       return "/hotPlace/hotPlaceUpdate";
 	    } 
 	 
@@ -233,12 +297,38 @@ public class HotPlaceController {
 	       return "redirect:adminHotPlace";
 	 }
 	 
+	 // 지역명, 테마, 상호명으로 검색
+	 @RequestMapping(value = "/adminHotPlaceSearch", method = RequestMethod.GET)
+	 public String adminHotPlaceSearch(String s_name, String t_name, String shop_name, Model model) throws IOException{
+	    	System.out.println(s_name);
+	    	System.out.println(t_name);
+	    	System.out.println(shop_name);
+	    	Map<String, Object> map = new HashMap<String,Object>();
+			
+	    	if(s_name.equals("")) {
+	    		
+	    	}else {
+	    		map.put("s_name", s_name);
+	    	}
+	    	
+	    	if(t_name.equals("")) {
+	    		
+	    	}else {
+	    		map.put("t_name", t_name);
+	    	}
+	    	if(shop_name.equals("")) {
+	    		
+	    	}else {
+	    		map.put("shop_name", shop_name);
+	    	}
+	    	List<HotPlaceVO> list = hservice.adminHotPlaceSearch(map);
+	    	
+	    	model.addAttribute("list",list);
+	    	return "/hotPlace/adminHotPlace";
 	 
 	 
 	 
-	 
-	 
-	 
+	 }
 
 }
 	 

@@ -12,6 +12,19 @@
 </head>
 <body>
 <h3> 서울 '구' 관리 페이지 </h3>
+<article>
+		<form name="seoulSearch" action="${path}/hotPlace/seoulSearch">
+			<legend style="font-size: 15px">지역명으로 검색</legend>
+			<table style="background-color:white;">
+				<tr>
+					<th style="font-size: 15px">지역명</th>
+					<td><input type="text" name="s_name"></td>
+					<td align="center"><input type="submit" class="btn btn-outline-info" value="검색">
+				</tr>
+			</table>
+		</form>
+</article>
+
 
 	<table border="1" cellspacing="0" style="width:500px; text-align: center;">
 	<thead>
@@ -26,6 +39,11 @@
 			<th>지역</th>
 			<th>정렬 순서</th>
 		</tr>
+	<c:if test="${empty list}">
+		<tr>
+			<td colspan="3">조회 결과가 없습니다.</td>
+		</tr>
+	</c:if>
 	<c:forEach items="${list}" var="list">
 		<tr>
 			<td>${list.s_code }</td>
