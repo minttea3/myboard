@@ -25,6 +25,8 @@ margin: 5px 25px; padding: 20px
   		<div class="form-group">
             <input type="submit" class="btn btn-outline-info" value="완료"/>
             <input type="reset" class="btn btn-outline-info" value="리셋"/>
+            <a href = "/hotPlace/themaDelete?t_code=${data.t_code }" role="button" class="btn btn-outline-info">삭제</a>
+            <br>
              <button type="button" class="btn btn-outline-info"><a href="/hotPlace/hotPlaceList"> 핫플레이스 메인으로</a></button>
             <button type="button" class="btn btn-outline-info"><a href="/hotPlace/adminThema">이전으로</a></button>
         </div>

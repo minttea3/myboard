@@ -48,8 +48,15 @@
 	 		comments,
 	 		h_order
 	 	from hotplace
-	 	where s_code = #{s_code}
+	 	where 1=1
+	 	<if test = "s_code != ''">
+	 	and s_code = #{s_code}
+	 	</if>
+	 	<if test = "t_code != ''">
 	 	and t_code = #{t_code}
+	 	</if>
+	 	<if test = "s_code == ''"></if>
+	 	<if test = "t_code == ''"></if>
 	 	order by h_order asc
 	</select>
 	<!-- 핫플레이스 등록 -->
@@ -126,17 +133,17 @@
 		FROM hotplace h, seoul s, thema t
 		WHERE h.s_code = s.s_code
 		AND h.t_code = t.t_code
-		<if test='s_sname!="전체"'>
+		<if test="s_name!=''">
 		AND s.s_name = #{s_name}
 		</if>
-		<if test='t_name!="전체"'>
+		<if test="t_name!=''">
 	 	AND t.t_name = #{t_name}
 	 	</if>
 	 	<if test="shop_name != ''">
 	 	AND h.shop_name like #{shop_name}||'%'
 	 	</if>
-		<if test='s_sname== "전체"'></if>
-		<if test='t_name == "전체"'></if>
+		<if test="s_name==''"></if>
+		<if test="t_name == ''"></if>
 		<if test="shop_name == ''"></if>
 	 	order by h.h_order asc
   	</select>

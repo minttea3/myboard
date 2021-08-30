@@ -33,12 +33,14 @@ margin: 5px 25px; padding: 20px
 	<div>지역</div>
 	<form method="post" action="${path}/hotPlace/hotPlaceList">
 		<select name="s_code" style="width:100px">
+			<option value="전체">전체</option>
 		 <c:forEach items="${list}" var="list">
 			<option value="${list.s_code }">${list.s_name }</option>
 		</c:forEach>
 		</select>
 		<div >테마</div>
 		<select name="t_code" style="width:100px">
+			<option value="전체">전체</option>
 		<c:forEach items="${list2}" var="list2"> 
 			<option value="${list2.t_code }">${list2.t_name }</option>
 		</c:forEach> 
@@ -46,7 +48,7 @@ margin: 5px 25px; padding: 20px
 		<button type="submit" class="btn btn-outline-info">검색</button>
 	</form>	
 	
-	<div style="width: 1000px; text-align: right;"><input type="button" class="btn btn-outline-info" onclick="allList()" value="전체보기"></div><br>
+	<br>
 	
 	<table border="1" width="1000px">
 	

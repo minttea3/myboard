@@ -70,6 +70,13 @@ public class HotPlaceController {
 		 System.out.println("야호");
 		 System.out.println();
 		 Map<String,String> map = new HashMap<String, String>();
+		 if(s_code.equals("전체")) {
+			 s_code="";
+		 }
+		 if(t_code.equals("전체")) {
+			 t_code="";
+		 }
+		 
 		 map.put("s_code",s_code);
 		 map.put("t_code",t_code);
 		 List<HotPlaceVO> list3 = hservice.hotPlaceSearchList(map);
@@ -313,17 +320,27 @@ public class HotPlaceController {
 			 List<ThemaVO> t_list = tservice.themaList();
 			 model.addAttribute("t_list",t_list);
 	    	
+	    	if(s_name.equals("전체")) {
+	    		s_name = "";
+	    		System.out.println("s널처리");
+	    	}
 	    	
+	    	if(t_name.equals("전체")) {
+	    		t_name="";
+	    		System.out.println("t널처리");
+	    	}
+			 
 	    	Map<String, Object> map = new HashMap<String,Object>();
 			
 	    		map.put("s_name", s_name);
 	    		map.put("t_name", t_name);
 	    	
-	    	if(shop_name.equals("")) {
-	    		
-	    	}else {
+//	    	if(shop_name.equals("")) {
+//	    		
+//	    	}else {
 	    		map.put("shop_name", shop_name);
-	    	}
+	    		System.out.println(shop_name+"0000");
+//	    	}
 	    	List<HotPlaceVO> list = hservice.adminHotPlaceSearch(map);
 	    	
 	    	model.addAttribute("list",list);

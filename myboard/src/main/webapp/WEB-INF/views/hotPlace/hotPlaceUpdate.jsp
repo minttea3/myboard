@@ -18,7 +18,15 @@ margin: 5px 25px; padding: 20px;
 	 $( document ).ready( function() {
 		$("#sNameSelect").val("${data.s_code}").attr("selected", "selected");
 		$("#tNameSelect").val("${data.t_code}").attr("selected", "selected");
-	} );
+			
+	 } );
+	 $(function () {
+	      $("#btnReset").bind("click", function () {
+	    	  location.reload();
+	       });
+	    });
+	 
+	   
 </script>
 </head>
 <body>
@@ -30,7 +38,7 @@ margin: 5px 25px; padding: 20px;
         <div><%-- <input  class="form-control" name="s_code" value="${data.s_code}" type="text"/> --%>
 	        <select id="sNameSelect" name="s_code" style="width:100px">
 				<c:forEach items="${s_list}" var="s_list">
-					<option value="${s_list.s_code }"  >${s_list.s_name }</option>
+					<option value="${s_list.s_code }">${s_list.s_name }</option>
 				</c:forEach>
 			</select>
 	        
@@ -44,7 +52,7 @@ margin: 5px 25px; padding: 20px;
 			</select>
         </div>
         <div class="form-group">상호명 : </div>
-        <div ><input name="shop_name" class="form-control"  value="${data.shop_name}" type="text"/></div>
+        <div ><input id="shop_name" name="shop_name" class="form-control"  value="${data.shop_name}" type="text"/></div>
         <div class="form-group">이미지 : </div>
         <div><input name="image"  class="form-control" value="${data.image}" type="text"/></div>
         <div class="form-group">위치 : </div>
@@ -59,7 +67,9 @@ margin: 5px 25px; padding: 20px;
         <div><input name="h_order"  class="form-control" value="${data.h_order}" type="text"/></div>
   		<div class="form-group">
             <input type="submit" class="btn btn-outline-info" value="완료"/>
-            <input type="reset" class="btn btn-outline-info" value="리셋"/>
+            <input type="button" id="btnReset" class="btn btn-outline-info" value="리셋"/>
+             <a href = "/hotPlace/hotPlaceDelete?h_code=${data.h_code }" role="button" class="btn btn-outline-info">삭제</a>
+             <br>
             <button type="button" class="btn btn-outline-info"><a href="/hotPlace/hotPlaceList"> 핫플레이스 메인으로</a></button>
             <button type="button" class="btn btn-outline-info"><a href="/hotPlace/adminHotPlace">이전으로</a></button>
         

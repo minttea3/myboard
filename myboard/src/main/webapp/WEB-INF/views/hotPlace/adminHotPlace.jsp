@@ -22,12 +22,14 @@ margin: 5px 25px; padding: 20px;
 			<legend style="font-size: 15px">사원 정보 여러 조건으로  검색</legend>
 		<label>지역명</label>
 		<select name="s_name" style="width:100px">
+				<option value="전체">전체</option>
 			<c:forEach items="${s_list}" var="s_list">
 				<option value="${s_list.s_name }">${s_list.s_name }</option>
 			</c:forEach>
 		</select>
-		<label>테마</label>
+		<label>테마명</label>
 		<select name="t_name" style="width:100px">
+			<option value="전체">전체</option>
 		<c:forEach items="${t_list}" var="t_list"> 
 			<option value="${t_list.t_name }">${t_list.t_name }</option>
 		</c:forEach> 
@@ -41,6 +43,8 @@ margin: 5px 25px; padding: 20px;
 <table class="center" border="1" width="1000px">
 
 	<tr>	
+		<th>지역명</th>
+		<th>테마명</th>
 		<th>이미지</th>
 		<th>상호</th>
 		<th>위치</th>
@@ -99,6 +103,8 @@ margin: 5px 25px; padding: 20px;
 			<td colspan="3">${list.h_order}</td>
 		</tr> --%>
 		<tr>
+			<td>${list.s_name }</td>
+			<td>${list.t_name }</td>
 			<td style="text-align: center;">🌹 </td>
 			<td><a href="${path}/hotPlace/hotPlaceUpdate?h_code=${list.h_code}">${list.shop_name }</a></td>
 			<td>${list.loc} </td>
