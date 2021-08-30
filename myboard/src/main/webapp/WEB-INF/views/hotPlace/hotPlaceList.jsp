@@ -92,7 +92,7 @@ margin: 5px 25px; padding: 20px
 		<tr>
 			<td style="text-align: center;">🌹 </td>
 			<td>${list3.shop_name }</td>
-			<td>${list3.loc} </td>
+			<td>${list3.loc} </td> 
 			<td>${list3.hours} </td>
 			<td>${list3.menu_price}</td>
 			<td>${list3.comments}</td>
