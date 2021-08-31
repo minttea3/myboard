@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
@@ -346,9 +347,28 @@ public class HotPlaceController {
 	    	model.addAttribute("list",list);
 	    	return "/hotPlace/adminHotPlace";
 	 
-	 
-	 
 	 }
+	 
+	 // 핫플 선택 삭제
+	 @RequestMapping(value = "/deleteHotPlaceList")
+	    public String ajaxTest(HttpServletRequest request) {
+	            
+	        String[] ajaxMsg = request.getParameterValues("valueArr");
+	       
+	        // 형변환
+	        int[] ajaxVal = new int[ajaxMsg.length];
+	        for(int i = 0; i<ajaxMsg.length; i++) {
+	        	ajaxVal[i] = Integer.parseInt(ajaxMsg[i]);
+	        }
+	        
+	        int size = ajaxMsg.length;
+	        for(int i = 0; i<size; i++) {
+	        	hservice.HotPlaceDelete(ajaxVal[i]);
+	        }
+	        return "redirect:adminHotPlace";
+	    }
+	    
+	  
 
 }
 	 
