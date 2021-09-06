@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kong.board.mappers.survey">
+	<!-- 설문조사 리스트 -->
+	<select id="surveyList" resultType="kong.my.domain.SurveyVO">
+		select
+	 		s_idx,
+	 		s_name,
+	 		s_gender,
+	 		s_age,
+	 		s_email,
+	 		s_purpose_of_visit,
+	 		s_level_of_satisfaction,
+	 		s_improvements
+	 	from survey
+	 	ORDER BY s_idx asc
+	</select>
+	<!-- 설문조사  등록 -->
+	<insert id="addSurvey" >
+		INSERT INTO survey
+		values(NEXTVAL('survey_idx'),
+				#{s_name},
+				#{s_gender},
+				#{s_age},
+				#{s_email},
+				#{s_purpose_of_visit},
+				#{s_level_of_satisfaction},
+				#{s_improvements}
+			   )
+	</insert>
+	<!-- 상세 정보 -->
+	<select id="surveyDetail"  resultType="kong.my.domain.SurveyVO">
+		select
+	 		s_idx,
+	 		s_name,
+	 		s_gender,
+	 		s_age,
+	 		s_email,
+	 		s_purpose_of_visit,
+	 		s_level_of_satisfaction,
+	 		s_improvements
+	 	from survey
+		where s_idx = #{s_idx}
+	</select>
+	  <!-- 설문조사 수정  -->
+    <update id="surveyUpDate">
+    update survey
+    set s_name = #{s_name}, 
+  		s_gender = #{s_gender}, 
+    	s_age = #{s_age}, 
+   		s_email = #{s_email},
+  		s_purpose_of_visit = #{s_purpose_of_visit},
+   		s_level_of_satisfaction = #{s_level_of_satisfaction},
+  	 	s_improvements = #{s_improvements}
+    where s_idx = #{s_idx} 
+    </update>
+     <!-- 방명록 삭제 -->
+    <delete id="surveyDelete">
+        delete from survey
+        where s_idx=#{s_idx}
+    </delete>
+	
+</mapper>

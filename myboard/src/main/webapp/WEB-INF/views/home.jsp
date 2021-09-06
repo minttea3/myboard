@@ -20,6 +20,8 @@ margin: 5px 25px; padding: 20px;
 <P>  The time on the server is ${serverTime}. </P>
  <a href='<c:url value='/csCenter/csCenterList'/>' role="button" class="btn btn-outline-info">방명록 게시판 들어가기~ </a><br>
 <br>
-<a href='<c:url value='/hotPlace/hotPlaceList'/>' role="button" class="btn btn-outline-info">핫플레이스 보러가기~ </a>
+<a href='<c:url value='/hotPlace/hotPlaceList'/>' role="button" class="btn btn-outline-info">핫플레이스 보러가기~ </a><br>
+<br>
+<a href='<c:url value='/survey/surveyList'/>' role="button" class="btn btn-outline-info">※ 웹 사이트 관련 설문 조사 ※ </a>
 </body>
 </html>
