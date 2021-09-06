@@ -44,7 +44,7 @@
 	 	from survey
 		where s_idx = #{s_idx}
 	</select>
-	  <!-- 설문조사 수정  -->
+	<!-- 설문조사 수정  -->
     <update id="surveyUpDate">
     update survey
     set s_name = #{s_name}, 
@@ -54,7 +54,7 @@
   		s_purpose_of_visit = #{s_purpose_of_visit},
    		s_level_of_satisfaction = #{s_level_of_satisfaction},
   	 	s_improvements = #{s_improvements}
-    where s_idx = #{s_idx} 
+    where s_idx = #{s_idx}
     </update>
      <!-- 방명록 삭제 -->
     <delete id="surveyDelete">
